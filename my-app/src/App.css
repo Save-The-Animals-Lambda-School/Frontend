@@ -1,0 +1,28 @@
+.App {
+  text-align: center;
+}
+
+.NCF {
+  margin: 50px auto;
+  padding: 1%;
+  color: #d0e17b;
+  background-color: #223843;
+  width: 40%;
+  font-size: 1.4rem;
+}
+
+.NCh1 {
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+.NCh3 {
+  padding: 0;
+  margin: 0;
+  font-size: 1.2rem;
+  margin-top: 1%;
+}
+
+.input {
+  width: 70%;
+  text-align: center;
+}
