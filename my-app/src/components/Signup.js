@@ -7,10 +7,7 @@ class Login extends React.Component {
             email: "",
             username: "",
             password: "",
-            role: [
-                organization,
-                supporter
-            ]
+            role: []
         }
     };
 
@@ -38,44 +35,69 @@ class Login extends React.Component {
         .catch( error => console.log("ERROR", error ))
     };
 
+    handleCheckedBoxes = e => {
+        this.setState({
+            credentials: {
+                ...this.state.credentials,
+            }
+        })
+    }
+
     render() {
         return (
-            <div>
-                <h1>Sign Up Here</h1>
-                <form>
-                    <input 
-                        type="text"
-                        name="email"
-                        value={this.state.credentials.email}
-                        onChange={this.handleChange}
-                        placeholder="Enter Email..."
-                    />
-                    <input
-                        type="text"
-                        name="username"
-                        value={this.state.credentials.username}
-                        onChange={this.handleChange}
-                        placeholder="Enter Username"
-                    />
-                    <input 
-                        type="password"
-                        name="password"
-                        value={this.state.credentials.password}
-                        onChange={this.handleChange}
-                        placeholder="Enter Password"
-                    />
-                    <input 
-                        type="checkbox"
-                        name="role"
-                        value={this.state.credentials.role}
-                    /> Organization
-                    <input 
+            <div className="signup-container">
+                <h1 className="s-h1">Sign Up Here</h1>
+                <form onSubmit={this.login}>
+                    <div className="s-box">
+                        <input 
+                            type="text"
+                            name="email"
+                            value={this.state.credentials.email}
+                            onChange={this.handleChange}
+                            placeholder="Enter Email..."
+                        />
+                    </div>
+
+                    <div className="s-box">
+                        <input
+                            type="text"
+                            name="username"
+                            value={this.state.credentials.username}
+                            onChange={this.handleChange}
+                            placeholder="Enter Username"
+                        />
+                    </div>
+
+                    <div className="s-box">
+                        <input 
+                            type="password"
+                            name="password"
+                            value={this.state.credentials.password}
+                            onChange={this.handleChange}
+                            placeholder="Enter Password"
+                        />
+                    </div>
+
+                    <div className="s-box">
+                        <input 
+                            className="checkbox"
                             type="checkbox"
                             name="role"
                             value={this.state.credentials.role}
-                    /> Supporter
+                        /> Organization
+                    <span className="span"></span>
+                        <input 
+                                className="checkbox"
+                                type="checkbox"
+                                name="role"
+                                value={this.state.credentials.role}
+                        /> Supporter
+                    </div>
+                    <button>Submit</button>
                 </form>
             </div>
         )
     }
 }
+
+export default Login;

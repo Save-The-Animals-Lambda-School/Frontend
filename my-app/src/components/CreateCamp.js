@@ -133,7 +133,7 @@ class CreateCamp extends React.Component {
                                 </option>
                             </select>
                         </div>
-
+                            <button>Submit</button>
                     </form>
                 </div>
             </div>
