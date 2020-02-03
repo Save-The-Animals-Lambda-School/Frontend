@@ -1,6 +1,6 @@
 import React from "react";
 // import S from "styled-components";
-// import axios from "axios";
+import axios from "axios";
 
 
 
@@ -8,12 +8,15 @@ class CreateCamp extends React.Component {
     state = {
         newCampaign: {
             title: "",
-            date: "",
-            location: "",
-            donationGoal: "",
+            animal: "",
             urgency: "",
+            location: "",
+            date: "",
+            description: "",
+            fundingGoal: "",
             images: [],
-            completed: ""
+            completed: "",
+            completed: false
         }
     };
 
@@ -26,24 +29,24 @@ class CreateCamp extends React.Component {
         });
     };
 
-    // addCampaignToList = e => {
-    //     axios.post("", this.state.newCampaign, {
-    //         // headers here headers: {Authorization: localStorage.getItem("token")}
-    //     })
-    //     .then("ADD CAMPAIGN RESPONSE" , response => {
-    //         console.log(response)
-    //     })
-    //     .catch("ADD CAMPAIGN FAILED", error => {
-    //         console.log(error)
-    //     })
-    // }
-    // onSubmit={this.addCampaignToList}
+    addCampaignToList = e => {
+        axios.post("https://save-the-animals-be.herokuapp.com/api/campaigns", this.state.newCampaign, {
+            // headers here headers: {Authorization: localStorage.getItem("token")}
+        })
+        .then("ADD CAMPAIGN RESPONSE" , response => {
+            console.log(response)
+        })
+        .catch("ADD CAMPAIGN FAILED", error => {
+            console.log(error)
+        })
+    }
+
     render() {
         return (
             <div>
                 <div className="NCF">
                     <h1 className="NCh1">Create A Campaign</h1>
-                    <form>
+                    <form onSubmit={this.addCampaignToList}>
                         <div className="c-box">
                             <h3 className="NCh3">Title</h3>
                             <input
@@ -53,6 +56,18 @@ class CreateCamp extends React.Component {
                                 value={this.state.newCampaign.title}
                                 onChange={this.handleChange}
                                 placeholder="Enter Campaign Title"
+                            />
+                        </div>
+
+                        <div className="c-box">
+                            <h3 className="NCh3">Animal</h3>
+                            <input 
+                                className="input"
+                                type="text"
+                                name="animal"
+                                value={this.state.newCampaign.animal}
+                                onChange={this.handleChange}
+                                placeholder="What Animal"
                             />
                         </div>
 
@@ -87,9 +102,21 @@ class CreateCamp extends React.Component {
                                 min="0.00"
                                 steps="any"
                                 name="donationGoal"
-                                value={this.state.newCampaign.donationGoal}
+                                value={this.state.newCampaign.fundingGoal}
                                 onChange={this.handleChange}
                                 placeholder="Goal"
+                            />
+                        </div>
+
+                        <div>
+                            <h5 className="description">Description</h5>
+                            <input 
+                                className="input"
+                                type="text"
+                                name="description"
+                                value={this.state.newCampaign.description}
+                                onChange={this.handleChange}
+                                placeholder="Describe the issues..."
                             />
                         </div>
 
