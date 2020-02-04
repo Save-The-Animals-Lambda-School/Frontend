@@ -1,3 +1,7 @@
+html {
+  background-color: black;
+}
+
 .App {
   text-align: center;
 }
@@ -59,3 +63,29 @@ button:hover {
   padding: 1.5%;
 }
 
+.u-h3 {
+  padding: 0;
+  margin: 3px;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: 0 auto;
+  padding: 2%;
+}
+
+.atags {
+  color: #f26f39;
+  opacity: .8;
+  text-decoration: none;
+}
+
+.atags:hover {
+  color: forestgreen;
+}
+
+.userorg-container {
+  color: white;
+}

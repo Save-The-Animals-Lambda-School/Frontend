@@ -13,10 +13,8 @@ class CreateCamp extends React.Component {
             location: "",
             date: "",
             description: "",
-            fundingGoal: "",
-            images: [],
-            completed: "",
-            completed: false
+            funding_goal: "",
+            image: ""
         }
     };
 
@@ -102,7 +100,7 @@ class CreateCamp extends React.Component {
                                 min="0.00"
                                 steps="any"
                                 name="donationGoal"
-                                value={this.state.newCampaign.fundingGoal}
+                                value={this.state.newCampaign.funding_goal}
                                 onChange={this.handleChange}
                                 placeholder="Goal"
                             />
@@ -123,13 +121,13 @@ class CreateCamp extends React.Component {
                         <div>
                             <select name="urgency">
                                 <option value={this.state.newCampaign.urgency}>
-                                    URGENT!
+                                    High!
                                 </option>
                                 <option value={this.state.newCampaign.urgency}>
-                                    Help Needed
+                                    Medium!
                                 </option>
                                 <option value={this.state.newCampaign.urgency}>
-                                    Growing Concern
+                                    Low!
                                 </option>
                             </select>
                         </div>
