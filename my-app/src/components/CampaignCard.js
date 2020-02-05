@@ -1,10 +1,11 @@
 import React from "react";
 
 const CampaignCard = props => {
+    console.log(props);
     const { title, animal, urgency, location, date, description, funding_goal} = props.campaign;
 
     return (
-        <div>
+        <div className="campaignlist-container">
             <h2>{title}</h2>
             <div>
                 Animal: {animal}

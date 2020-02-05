@@ -78,23 +78,21 @@ button:hover {
 
 .atags {
   color: #f26f39;
-  opacity: .8;
+  opacity: .9;
   text-decoration: none;
 }
 
 .atags:hover {
-  color: forestgreen;
+  color: orange;
+  opacity: .5;
 }
 
 .userorg-container {
-  color: white;
+  margin-top: 5%;
+  color: #d0e17b;
 }
 
 .campaignlist-container {
-  color: white;
-}
-
-.campaign-container{
   width: 50%;
   margin: 1% auto;
   background-color: #223843;
@@ -104,7 +102,15 @@ button:hover {
 
 .updating-div {
   width: 50%;
-  margin: 0 auto;
+  margin: 1% auto 5% ;
   color: #d0e17b;
   background-color: #223843;
+  padding: 1%;
+}
+.annoyingLink{
+  text-decoration: none;
+}
+
+.loading {
+  color: white;
 }

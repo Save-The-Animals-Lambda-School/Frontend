@@ -33,7 +33,7 @@ export default class CampaignList extends React.Component {
 
     render() {
         return (
-            <div className="campaignlist-container">
+            <div className="campaignlist">
                 {this.state.campaigns.map(campaign => (
                     <CampaignDetails key={campaign.id} campaign={campaign} />
                 ))}
@@ -44,7 +44,7 @@ export default class CampaignList extends React.Component {
 
 function CampaignDetails({ campaign }) {
     return (
-        <Link to={`/campaign/${campaign.id}`}>
+        <Link className="annoyingLink" to={`/campaign/${campaign.id}`}>
             <CampaignCard campaign={campaign}/>
         </Link>
     );

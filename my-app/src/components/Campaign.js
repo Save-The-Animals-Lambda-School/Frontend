@@ -33,7 +33,7 @@ export default class Movie extends React.Component {
             .delete(`https://save-the-animals-be.herokuapp.com/api/campaigns/${this.props.match.params.id}`)
             .then(response => {
                 console.log(response)
-                this.props.history.push(`/campaign-list`)
+                this.props.history.push(`/`)
             })
             .catch(error => {
                 console.log("Failed to delete campaign" , error)
@@ -42,7 +42,7 @@ export default class Movie extends React.Component {
 
     render() {
         if (!this.state.campaign) {
-            return <div>Loading campaigns...</div>;
+            return <div className="loading">Loading campaigns...</div>;
         }
 
         return (
