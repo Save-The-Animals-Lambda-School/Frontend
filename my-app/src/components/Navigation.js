@@ -5,12 +5,12 @@ class Navigation extends React.Component {
     render() {
         return (
             <div className="nav-container">
-                <a className="atags"  href="#">Home</a>
-                <a className="atags"  href="#">About</a>
-                <a className="atags"  href="#">Contact</a>
-                <a className="atags"  href="/user-or-org">Sign Up</a>
-                <a className="atags"  href="/sign-in">Sign In</a>
-                <a className="atags"  href="list-campaigns">Campaigns</a>
+                <Link to ="#" className="atags">Home</Link>
+                <Link to ="#" className="atags">About</Link>
+                <Link to ="#" className="atags">Contact</Link>
+                <Link to ="/user-or-org" className="atags">Sign Up</Link>
+                <Link to ="/sign-in" className="atags">Sign In</Link>
+                <Link to ="/campaign-list" className="atags">Campaigns</Link>
             </div>
         )
     }

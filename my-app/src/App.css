@@ -89,3 +89,15 @@ button:hover {
 .userorg-container {
   color: white;
 }
+
+.campaignlist-container {
+  color: white;
+}
+
+.campaign-container{
+  width: 50%;
+  margin: 1% auto;
+  background-color: #223843;
+  color: #d0e17b;
+  padding: 1%;
+}

@@ -22,15 +22,19 @@ class UserSignUp extends React.Component {
         })
     };
 
-    userLogin = e => {
+    userSignup = e => {
+        e.preventDefault();
+        if (window.confirm('Thank you for registering. Please login to your new account.'))
         axios
           .post("https://save-the-animals-be.herokuapp.com/api/auth/register/supporter", {
             email: this.state.user.email,
             username: this.state.user.username,
             password: this.state.user.password,
+            first_name: this.state.user.first_name,
+            last_name: this.state.user.last_name
         })
         .then(response => {
-            localStorage.setItem("token", response.data.payload)
+            console.log(response);
         })
         .catch( error => console.log("ERROR", error ))
     };
@@ -40,7 +44,7 @@ class UserSignUp extends React.Component {
 
             <div className="signup-container">
                 <h1 className="s-h1">user sign up form</h1>
-                <form onSubmit={this.userLogin}>
+                <form onSubmit={this.userSignup}>
                     <div className="s-box">
                         <input 
                             type="text"
@@ -68,6 +72,24 @@ class UserSignUp extends React.Component {
                             value={this.state.user.password}
                             onChange={this.handleChange}
                             placeholder="Enter Password"
+                        />
+                    </div>
+                    <div className="s-box">
+                        <input 
+                            type="text"
+                            name="first_name"
+                            value={this.state.user.first_name}
+                            onChange={this.handleChange}
+                            placeholder="Last Name"
+                        />
+                    </div>
+                    <div className="s-box">
+                        <input 
+                            type="text"
+                            name="last_name"
+                            value={this.state.user.last_name}
+                            onChange={this.handleChange}
+                            placeholder="First Name"
                         />
                     </div>
                     <button>Submit</button>
