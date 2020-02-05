@@ -101,3 +101,10 @@ button:hover {
   color: #d0e17b;
   padding: 1%;
 }
+
+.updating-div {
+  width: 50%;
+  margin: 0 auto;
+  color: #d0e17b;
+  background-color: #223843;
+}

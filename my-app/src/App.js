@@ -8,17 +8,25 @@ import UpdateCampaign from "./components/UpdateCampaign";
 import UserOrg from "./components/UserOrg";
 import Navigation from "./components/Navigation";
 import CampaignList from "./components/CampaignList";
+import Campaign from "./components/Campaign";
 
-function App() {
+const App = () => {
   return (
     <Router>
       <div className="App">
         <Navigation />
-        <Route path="/campaign-list"  component={CampaignList}/>
-        <Route path="/sign-up" component={UserSignUp} />
-        <Route path="/new-campaign" component={CreateCamp} />
-        <Route path="/org-signup" component={OrgSignUp} />
+        <Route exact path="/" component={CampaignList}/>
+
+        <Route path="/campaign/:id"
+          render={props => {
+            return <Campaign {...props} />;
+          }}
+          />
         <Route path="/update-campaign/:id" component={UpdateCampaign} />
+        <Route path="/new-campaign" component={CreateCamp} />
+
+        <Route path="/sign-up" component={UserSignUp} />
+        <Route path="/org-signup" component={OrgSignUp} />
         <Route path="/user-or-org" component={UserOrg} />
       </div>
     </Router>

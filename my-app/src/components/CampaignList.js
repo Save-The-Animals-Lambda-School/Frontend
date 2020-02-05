@@ -1,10 +1,17 @@
 import React from "react";
 import axios from "axios";
+import CampaignCard from "./CampaignCard";
+import { Link } from "react-router-dom";
 
-class CampaignList extends React.Component {
-    state = {
-        CampaignList: []
-    };
+
+export default class CampaignList extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            campaigns: []
+        };
+    }
+
 
     componentDidMount() {
         this.getCampaigns();
@@ -16,7 +23,7 @@ class CampaignList extends React.Component {
             .then(response => {
                 // console.log(response.data)
                 this.setState({
-                    ...this.state, CampaignList: response.data
+                    ...this.state, campaigns: response.data
                 })
             })
             .catch(error => {
@@ -24,38 +31,21 @@ class CampaignList extends React.Component {
             })
     };
 
-    deleteCampaign = (campaign) => {
-        axios
-            .delete(`https://save-the-animals-be.herokuapp.com/api/campaigns/${campaign.id}`)
-            .then(response => {
-                this.getCampaigns(response);
-            })
-            .catch(error => {
-                console.log("Failed to delete campaign" , error)
-            })
-    }
-    
-    render(){
+    render() {
         return (
             <div className="campaignlist-container">
-                    <h1>Current Campaigns</h1>
-                    {this.state.CampaignList.map(campaign =>
-                        <div className="campaign-container">
-                            <h3>{campaign.title}</h3>
-                            <p>{campaign.location}</p>
-                            <p>{campaign.description}</p>
-                            <button>Edit</button>
-                            <button onClick={e => {
-                                e.stopPropagation();
-                                this.deleteCampaign(campaign)
-                            }
-                            }>Delete</button>
-                            
-                        </div>    
-                    )}
+                {this.state.campaigns.map(campaign => (
+                    <CampaignDetails key={campaign.id} campaign={campaign} />
+                ))}
             </div>
-        )
+        );
     }
 }
 
-export default CampaignList;
+function CampaignDetails({ campaign }) {
+    return (
+        <Link to={`/campaign/${campaign.id}`}>
+            <CampaignCard campaign={campaign}/>
+        </Link>
+    );
+}

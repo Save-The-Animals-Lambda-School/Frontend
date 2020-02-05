@@ -10,7 +10,7 @@ class Navigation extends React.Component {
                 <Link to ="#" className="atags">Contact</Link>
                 <Link to ="/user-or-org" className="atags">Sign Up</Link>
                 <Link to ="/sign-in" className="atags">Sign In</Link>
-                <Link to ="/campaign-list" className="atags">Campaigns</Link>
+                <Link to ="/" className="atags">Campaigns</Link>
             </div>
         )
     }

@@ -1,45 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
-class UpdateCampaign extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            id: this.props.match.params.id,
-            title: "",
-            animal: "",
-            urgency: "",
-            location: "",
-            date: "",
-            description: "",
-            funding_goal: "",
-            image: ""
-        }
-    }
+const UpdateCampaign = (props) => {
 
-    handleChange = e => {
-        this.setState({
-            ...this.state,
+    const [ campaign, setCampaign ] = useState({
+        id: props.match.params.id,
+        title: "",
+        animal: "",
+        urgency: "",
+        location: "",
+        date: "",
+        description: "",
+        funding_goal: "",
+        image: "",
+        completed: false
+    })
+
+    const handleChange = e => {
+        setCampaign({
+            ...campaign,
             [e.target.name]: e.target.value
         });
     };
 
-    handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
         axios   
-            .put(`https://save-the-animals-be.herokuapp.com/api/campaign/${this.state.id}`, this.state)
+            .put(`https://save-the-animals-be.herokuapp.com/api/campaigns/${campaign.id}`, campaign)
             .then(response => {
                 console.log("Updating Campaign..." , response)
-                this.props.history.push(`/update-campaign/${this.props.match.params.id}`)
+                props.history.push(`/update-campaign/${props.match.params.id}`)
             })
             .catch(error => {
                 console.log(error)
             });
     };
 
-    render() {
-        return(
+        return (
             <div className="signup-container">
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <h1>Update Campaign</h1>
 
                     <div className="u-box">
@@ -47,8 +46,8 @@ class UpdateCampaign extends React.Component {
                     <input
                         type="text"
                         name="title"
-                        value={this.state.title}
-                        onChange={this.handleChange}
+                        value={campaign.title}
+                        onChange={handleChange}
                         placeholder="Update title"
                     />
                     </div>
@@ -58,8 +57,8 @@ class UpdateCampaign extends React.Component {
                     <input
                         type="text"
                         name="animal"
-                        value={this.state.animal}
-                        onChange={this.handleChange}
+                        value={campaign.animal}
+                        onChange={handleChange}
                         placeholder="Update animal"
                     />
                     </div>
@@ -68,8 +67,8 @@ class UpdateCampaign extends React.Component {
                     <input
                         type="text"
                         name="location"
-                        value={this.state.location}
-                        onChange={this.handleChange}
+                        value={campaign.location}
+                        onChange={handleChange}
                         placeholder="Update location"
                     />
                     </div>
@@ -79,8 +78,8 @@ class UpdateCampaign extends React.Component {
                     <input
                         type="date"
                         name="date"
-                        value={this.state.date}
-                        onChange={this.handleChange}
+                        value={campaign.date}
+                        onChange={handleChange}
                         placeholder="Update date"
                     />
                     </div>
@@ -90,8 +89,8 @@ class UpdateCampaign extends React.Component {
                     <input
                         type="text"
                         name="description"
-                        value={this.state.description}
-                        onChange={this.handleChange}
+                        value={campaign.description}
+                        onChange={handleChange}
                         placeholder="Update description"
                     />
                     </div>
@@ -101,30 +100,29 @@ class UpdateCampaign extends React.Component {
                     <input
                         type="number"
                         name="funding_goal"
-                        value={this.state.funding_goal}
-                        onChange={this.handleChange}
+                        value={campaign.funding_goal}
+                        onChange={handleChange}
                     />
                     </div>
 
                     <div className="u-box">
                         <h3 className="u-h3">URGENCY</h3>
                             <select name="urgency">
-                                <option value={this.state.urgency}>
+                                <option value={campaign.urgency}>
                                     High!
                                 </option>
-                                <option value={this.state.urgency}>
+                                <option value={campaign.urgency}>
                                     Medium!
                                 </option>
-                                <option value={this.state.urgency}>
+                                <option value={campaign.urgency}>
                                     Low!
                                 </option>
                             </select>
                         </div>
-                        <button>Submit</button>
+                        <button>Update</button>
                 </form>
             </div>
         )
-    }
 };
 
 export default UpdateCampaign;
