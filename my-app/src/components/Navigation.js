@@ -5,7 +5,7 @@ class Navigation extends React.Component {
     render() {
         return (
             <div className="nav-container">
-                <Link to ="#" className="atags">Home</Link>
+                <a className="atags" href="https://pensive-bell-33a592.netlify.com/">Home</a>
                 <Link to ="/user-or-org" className="atags">Sign Up</Link>
                 <Link to ="/login" className="atags">Sign In</Link>
                 <Link to ="/protected" className="atags">Campaigns</Link>
