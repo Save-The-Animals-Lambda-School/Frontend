@@ -1,7 +1,7 @@
 import React from "react";
 
 const CampaignCard = props => {
-    console.log(props);
+    // console.log(props);
     const { title, animal, urgency, location, date, description, funding_goal} = props.campaign;
 
     return (

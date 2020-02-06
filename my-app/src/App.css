@@ -114,3 +114,13 @@ button:hover {
 .loading {
   color: white;
 }
+
+.login-container {
+  color: #d0e17b;
+  width: 50%;
+  margin: 5% auto;
+}
+
+.login-button {
+  margin-top: 1%;
+}
